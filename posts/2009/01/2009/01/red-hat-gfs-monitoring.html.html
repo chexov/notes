@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<link href='../../../exports.css' rel='stylesheet'>
+<link href='../../../exports.css' rel='stylesheet'>
+
+</head>
+<body>
+<div id='wrap'>
+<div id='header'>
+<h1>Thoughts and notes</h1>
+<h2>This is an archived post
+This is an archived post
+</h2>
+</div>
+<div id='content'><div id='nav'>
+<a href="../../../posts/2008/12/2008/12/how-to-do-something-like-linux-netstat.html.html">Previous</a>
+&nbsp; 
+<a href="../../../index.html">Index</a>
+&nbsp; 
+<a href="../../../posts/2008/12/2008/12/mysql-cluster-ndbd-monitoring-with.html.html">Next</a>
+</div>
+<div class='post'>
+<div class='post_header'>
+<h3>Red Hat GFS monitoring</h3>
+<div class='post_info'>
+<span class='post_time'>January  9 2009,  3:40 PM</span>
+<span class='author'>&nbsp;by Anton Checkhov</span>
+</div>
+</div>
+<div class='post_body'><p>During usage of GFS some of nodes getting I/O errors on GFS filesystem. A little script helps be informed about nodes with such problems <a href="http://github.com/chexov/unixscripts/raw/master/gfs/check_gfs">check_gfs</a></p>
+<p>Check of GFS from command line example:</p>
+<div class="CodeRay">
+  <div class="code"><pre># /opt/sbin/check_gfs /prodraid01-a1/
+OK - I found 57 files in /prodraid01-a1/</pre></div>
+</div>
+
+<p>I have about 12 GFS nodes. On every host installed Nagios NRPE daemon. To base config file of NRPE daemon <code>(nrpe.conf)</code> check_gfs command added in such way:</p>
+<div class="CodeRay">
+  <div class="code"><pre>command[check_gfs]=/opt/sbin/check_gfs /prodraid01-a1/</pre></div>
+</div>
+
+<p>Here is Nagios service section for GFS:</p>
+<div class="CodeRay">
+  <div class="code"><pre>define service{
+      use                     clusterservice
+      hostgroup_name          gfsfarm
+      service_description     GFS availability
+      check_command           check_nrpe!check_gfs
+}</pre></div>
+</div>
+
+<div class="blogger-post-footer"><img src="https://blogger.googleusercontent.com/tracker/92519859511925554-3737427316397615206?l=insideoutminds.blogspot.com" height="1" alt="" width="1" /></div></div>
+<div class='post_tags'>
+<h4>Tags</h4>
+<div class='post_tags_list'>gfs</div>
+</div>
+<div class='post_responses'>
+<h4>131 views and 0 responses</h4>
+<ul class='post_responses list'>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

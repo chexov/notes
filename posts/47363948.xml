@@ -1,0 +1,121 @@
+<item>
+	<title>Using cloc tool to calculate LOC of any git commit</title>
+	<link>http://chexov.posterous.com/using-cloc-tool-calculate-loc-on-your-commit</link>
+	<pubDate>Fri Mar 25 19:52:00 -0700 2011</pubDate>
+	
+	<dc:creator><![CDATA[Anton Checkhov]]></dc:creator>
+	
+	
+		<category domain="tag" nicename="git"><![CDATA[git]]></category>
+	
+
+	<category><![CDATA[Uncategorized]]></category>
+
+	<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+
+  <guid isPermaLink="false">http://chexov.posterous.com/using-cloc-tool-calculate-loc-on-your-commit</guid>
+	<description></description>
+	<content:encoded><![CDATA[<p>In case you want to know you Lines Of Code counters for any git commit use awsome insructions below.</p>
+<p>You need <a href="http://cloc.sourceforge.net/" title="cloc">cloc</a> tool to get it working right.</p>
+<p>&nbsp;</p>
+<p>Put these lines into your ~/.gitconfig:</p>
+<div class="CodeRay">
+  <div class="code"><pre>[difftool &quot;cloc&quot;]
+ cmd = cloc --diff $LOCAL $REMOTE
+
+[alias]
+ cloc = difftool -t cloc -y</pre></div>
+</div>
+
+<p>If you already have <code>[alias]</code> section, append that to the end of it.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Example go taste it:</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>$git cloc myscript.js 
+       1 text file.
+       1 text file.
+       0 files ignored.                             
+
+http://cloc.sourceforge.net v 1.53  T=1.0 s (1.0 files/s, 1.0 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Javascript
+ same                            0              0            573           3561
+ modified                        1              0              0             42
+ added                           0             15             24             61
+ removed                         0              0              0              3
+-------------------------------------------------------------------------------
+SUM:
+ same                            0              0            573           3561
+ modified                        1              0              0             42
+ added                           0             15             24             61
+ removed                         0              0              0              3
+-------------------------------------------------------------------------------</pre></div>
+</div>
+
+<p><strong>Or even</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>$git cloc d1d157650c..4a8162b
+
+       1 text file.
+       1 text file.
+       0 files ignored.                             
+
+http://cloc.sourceforge.net v 1.53  T=0.5 s (2.0 files/s, 2.0 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Javascript
+ same                            0              0             66            153
+ modified                        1              0              0              0
+ added                           0             15             12             80
+ removed                         0              0              0              0
+-------------------------------------------------------------------------------
+SUM:
+ same                            0              0             66            153
+ modified                        1              0              0              0
+ added                           0             15             12             80
+ removed                         0              0              0              0
+-------------------------------------------------------------------------------
+       1 text file.
+       1 text file.
+       0 files ignored.                             
+
+http://cloc.sourceforge.net v 1.53  T=0.5 s (2.0 files/s, 2.0 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Javascript
+ same                            0              0            101            412
+ modified                        1              0              7             63
+ added                           0              0             24            161
+ removed                         0              1             11             69
+-------------------------------------------------------------------------------
+SUM:
+ same                            0              0            101            412
+ modified                        1              0              7             63
+ added                           0              0             24            161
+ removed                         0              1             11             69
+-------------------------------------------------------------------------------
+       1 text file.
+       0 text files.
+       1 file ignored.</pre></div>
+</div>]]></content:encoded>
+	<excerpt:encoded><![CDATA[In case you want to know you Lines Of Code counters for any git commit use awsome insructions below. You need cloc tool to get it working right. Put these lines into your ~/.gitconfig: [difftool "cloc"] cmd = cloc --diff $LOCAL $REMOTE [alias] clo...]]></excerpt:encoded>	
+
+	<wp:post_date>Fri Mar 25 19:52:00 -0700 2011</wp:post_date>
+	<wp:post_date_gmt>%= display_date %></wp:post_date_gmt>
+	<wp:comment_status>open</wp:comment_status>
+	<wp:ping_status>open</wp:ping_status>
+	<wp:post_name>using-cloc-tool-calculate-loc-on-your-commit</wp:post_name>
+	<wp:status>publish</wp:status>
+	<wp:post_parent>0</wp:post_parent>
+	<wp:menu_order>0</wp:menu_order>
+	<wp:post_type>post</wp:post_type>
+	<wp:post_password></wp:post_password>
+	<wp:is_sticky>0</wp:is_sticky>
+
+	
+</item>

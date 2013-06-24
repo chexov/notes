@@ -1,0 +1,50 @@
+<item>
+	<title>python: shove</title>
+	<link>http://chexov.posterous.com/python-shove</link>
+	<pubDate>Thu Apr 01 15:34:00 -0700 2010</pubDate>
+	
+	<dc:creator><![CDATA[Anton Checkhov]]></dc:creator>
+	
+	
+		<category domain="tag" nicename="python"><![CDATA[python]]></category>
+	
+
+	<category><![CDATA[Uncategorized]]></category>
+
+	<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+
+  <guid isPermaLink="false">http://chexov.posterous.com/python-shove</guid>
+	<description></description>
+	<content:encoded><![CDATA[<p>&nbsp;</p>
+<div class="CodeRay">
+  <div class="code"><pre># Store persistent objects in files
+file_data = Shove('file://path/to/file')
+# Store persistent objects in a BSDDB database file 
+bsdb_data = Shove('bsddb://path/to/file')  
+# Store persistent objects in SVN svn_data = Shove('svn://user:password@http://svn.mydomain.com/path/to/svn') 
+# Store persistent objects in S3
+s3_data = Shove('s3://s3_key:s3_secret@bucket') 
+# Store persistent objects in SQLite using SQLAlchemy
+sqlite_data = Shove('sqlite:///relative/path/to/database.txt')  
+#To compress data that you store, pass compress=True as an argument 
+# Store compressed data in the 'data.db' BSDDB file 
+bsddb_data = Shove('bsddb://data.db', compress=True)</pre></div>
+</div>
+
+<p>&nbsp;</p>]]></content:encoded>
+	<excerpt:encoded><![CDATA[# Store persistent objects in files file_data = Shove('file://path/to/file') # Store persistent objects in a BSDDB database file bsdb_data = Shove('bsddb://path/to/file') # Store persistent objects in SVN svn_data = Shove('svn://user:password@http...]]></excerpt:encoded>	
+
+	<wp:post_date>Thu Apr 01 15:34:00 -0700 2010</wp:post_date>
+	<wp:post_date_gmt>%= display_date %></wp:post_date_gmt>
+	<wp:comment_status>open</wp:comment_status>
+	<wp:ping_status>open</wp:ping_status>
+	<wp:post_name></wp:post_name>
+	<wp:status>publish</wp:status>
+	<wp:post_parent>0</wp:post_parent>
+	<wp:menu_order>0</wp:menu_order>
+	<wp:post_type>post</wp:post_type>
+	<wp:post_password></wp:post_password>
+	<wp:is_sticky>0</wp:is_sticky>
+
+	
+</item>

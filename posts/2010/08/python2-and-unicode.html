@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<link href='../../../exports.css' rel='stylesheet'>
+<link href='../../../exports.css' rel='stylesheet'>
+
+</head>
+<body>
+<div id='wrap'>
+<div id='header'>
+<h1>Thoughts and notes</h1>
+<h2>This is an archived post
+This is an archived post
+</h2>
+</div>
+<div id='content'><div id='nav'>
+<a href="../../../posts/2010/08/centos-notes.html">Previous</a>
+&nbsp; 
+<a href="../../../index-2.html">Index</a>
+&nbsp; 
+<a href="../../../posts/2010/08/iostat-for-network-traffic.html">Next</a>
+</div>
+<div class='post'>
+<div class='post_header'>
+<h3>python2 and unicode</h3>
+<div class='post_info'>
+<span class='post_time'>August  3 2010, 11:01 PM</span>
+<span class='author'>&nbsp;by Anton Checkhov</span>
+</div>
+</div>
+<div class='post_body'><p>Set system encoding:</p>
+<p>
+<p>export LANG=en_US.UTF-8</p>
+<p>export LC_ALL=en_US.UTF-8</p>
+<p />
+<p />
+Decode to  ASAP <p /> </p>
+<div class="CodeRay">
+  <div class="code"><pre>def to_unicode_or_bust(obj, encoding='utf-8'):
+   if isinstance(obj, basestring)
+      if not isinstance(obj, unicode):
+         obj = unicode(obj, encoding)
+   return obj</pre></div>
+</div>
+
+<p><p />  <p /> Shortcuts <p /> <code> <br />codecs.open() <br />import codecs <br />f = codecs.open('/tmp/ivan_utf8.txt', 'w', encoding='utf-8' ) <br />f.read() <br />f.write(ivan_uni) <br />f.close() <br /></code> <p />  <p /> Based on this slideshow <a href="http://farmdev.com/talks/unicode/">http://farmdev.com/talks/unicode/</a></p>
+<p>&nbsp;</p></div>
+<div class='post_responses'>
+<h4>601 views and 0 responses</h4>
+<ul class='post_responses list'>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

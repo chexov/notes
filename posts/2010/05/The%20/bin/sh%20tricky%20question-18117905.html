@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<link href='../../../exports.css' rel='stylesheet'>
+<link href='../../../exports.css' rel='stylesheet'>
+
+</head>
+<body>
+<div id='wrap'>
+<div id='header'>
+<h1>Thoughts and notes</h1>
+<h2>This is an archived post
+This is an archived post
+</h2>
+</div>
+<div id='content'><div id='nav'>
+<a href="../../../posts/2010/05/Rules%20of%20thumb%20for%20geocoordinates%20-18134642.html">Previous</a>
+&nbsp; 
+<a href="../../../index-2.html">Index</a>
+&nbsp; 
+<a href="../../../posts/2010/04/vim:%20save%20with%20sudo-16877580.html">Next</a>
+</div>
+<div class='post'>
+<div class='post_header'>
+<h3>The /bin/sh tricky question</h3>
+<div class='post_info'>
+<span class='post_time'>May  5 2010,  4:54 AM</span>
+<span class='author'>&nbsp;by Anton Checkhov</span>
+</div>
+</div>
+<div class='post_body'><p>Should be interesting for a job interview for the Systems Engineer</p>
+<p><strong>What is the difference between two scripts:</strong></p>
+<p><span style="text-decoration: underline;">First one: </span><br /><code> </code></p>
+<p style="padding-left: 30px;"><code>for I in `cmd`; do <br /> #stuff; <br />done"<span style="font-family: Arial, Helvetica, sans-serif;"><br /></span></code></p>
+<p><code><span style="font-family: Arial, Helvetica, sans-serif;"><span style="text-decoration: underline;"> </span><span style="text-decoration: underline;">Second one: </span></span><br /></code></p>
+<p style="padding-left: 30px;"><code>cmd | while read I; do <br /> #stuff; <br />done</code></p>
+<p style="padding-left: 30px;"> </p></div>
+<div class='post_tags'>
+<h4>Tags</h4>
+<div class='post_tags_list'>shellscript</div>
+</div>
+<div class='post_responses'>
+<h4>223 views and 1 response</h4>
+<ul class='post_responses list'>
+<li class='response clearfix'>
+<div class='response_header'>
+<div class='response_time'>May 26 2010,  6:28 AM</div>
+<div class='response_name'>darkproger (Twitter) responded:</div>
+</div>
+<div class='response_body'>`for` case:<br /> $I will contain words (space-separated), extracted from cmd output<p>`while` case:<br /> $I will contain lines (\n separated)</p><p>Right?</p></div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

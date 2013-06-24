@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<link href='../../../exports.css' rel='stylesheet'>
+<link href='../../../exports.css' rel='stylesheet'>
+
+</head>
+<body>
+<div id='wrap'>
+<div id='header'>
+<h1>Thoughts and notes</h1>
+<h2>This is an archived post
+This is an archived post
+</h2>
+</div>
+<div id='content'><div id='nav'>
+<a href="../../../posts/2010/12/os-x-addressbook-staled-conflict.html">Previous</a>
+&nbsp; 
+<a href="../../../index.html">Index</a>
+&nbsp; 
+<a href="../../../posts/2008/12/2008/12/how-to-do-something-like-linux-netstat.html.html">Next</a>
+</div>
+<div class='post'>
+<div class='post_header'>
+<h3>OpenWRT Kamikaze. howto allow VPN from internal net</h3>
+<div class='post_info'>
+<span class='post_time'>December 14 2008,  4:03 PM</span>
+<span class='author'>&nbsp;by Anton Checkhov</span>
+</div>
+</div>
+<div class='post_body'><p>Here is simple and working solution for Openwrt kamikaze linux to allow VPN (pptp,gre) connections from internal lan. Also you can use it for allowing SIP calls from your internal lan and use SNMP tools.<br /> No need any changes in <code>/etc/firewall.user</code> or <code>/etc/config/firewall</code> files.</p>
+<p>Just connect to your router using SSH protocol. After connection established, type this commands:<br /> <code>ipkg upgrade<br /> ipkg install kmod-ipt-nathelper-extra<br /> reboot<br /></code></p>
+<p><strong>All should works after system loads!</strong></p>
+<p>Package <code>kmod-ipt-nathelper-extra</code> install this kernel modules into your system:<br /> <code><br /> - ip_conntrack_amanda<br /> - ip_conntrack_proto_gre<br /> - ip_nat_proto_gre<br /> - ip_conntrack_pptp<br /> - ip_nat_pptp<br /> - ip_conntrack_sip<br /> - ip_nat_sip<br /> - ip_nat_snmp_basic<br /></code><br /> The moust interesting for us is <code>ip_nat_proto_gre</code>, which loads support of GRE packets into linux kernel and pass it to your local workstation. Now you can connect from you internal net, using Windows/OSX/Linux/"put your OS here".</p>
+<h2>If you need only VPN ...</h2>
+<p>... and no need SIP, TFTP, H323, IRC, SNMP, than remove this files <code>/etc/modules.d/40-ipt-extra</code>, <code>/etc/modules.d/40-ipt-nathelper</code>:<code>rm /etc/modules.d/40-ipt-extra</code><code>rm /etc/modules.d/40-ipt-nathelper</code>and leave in file <code>/etc/modules.d/40-ipt-nathelper-extra</code> only this lines: <code>ip_conntrack_proto_gre ip_nat_proto_gre ip_conntrack_pptp ip_nat_pptp</code></p>
+<p>On my Kamikaze this works fine. Good luck!</p>
+<div class="blogger-post-footer"><img src="https://blogger.googleusercontent.com/tracker/92519859511925554-1134182891631768964?l=insideoutminds.blogspot.com" height="1" alt="" width="1" /></div></div>
+<div class='post_tags'>
+<h4>Tags</h4>
+<div class='post_tags_list'>openwrt</div>
+</div>
+<div class='post_responses'>
+<h4>154 views and 0 responses</h4>
+<ul class='post_responses list'>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<link href='../../../exports.css' rel='stylesheet'>
+<link href='../../../exports.css' rel='stylesheet'>
+
+</head>
+<body>
+<div id='wrap'>
+<div id='header'>
+<h1>Thoughts and notes</h1>
+<h2>This is an archived post
+This is an archived post
+</h2>
+</div>
+<div id='content'><div id='nav'>
+<a href="../../../posts/2012/04/array-in-the-binsh-using-ifs.html">Previous</a>
+&nbsp; 
+<a href="../../../index.html">Index</a>
+&nbsp; 
+<a href="../../../posts/2011/06/osx-javascript-lint-vim.html">Next</a>
+</div>
+<div class='post'>
+<div class='post_header'>
+<h3>[linux] How to disable CPU</h3>
+<div class='post_info'>
+<span class='post_time'>March  5 2012,  6:49 PM</span>
+<span class='author'>&nbsp;by Anton Checkhov</span>
+</div>
+</div>
+<div class='post_body'><p>
+<div class="CodeRay">
+  <div class="code"><pre>echo 0|sudo tee /sys/devices/system/cpu/cpu1/online</pre></div>
+</div>
+
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font: inherit; vertical-align: baseline; color: #1f0909; font-family: PT Serif; line-height: 24px; text-align: left; padding: 0px;">to disable cpu1 (cpu0 would be the first one, cpu1 next and so on).</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font: inherit; vertical-align: baseline; color: #1f0909; font-family: PT Serif; line-height: 24px; text-align: left; padding: 0px;">If you wanted to disable a number of them in one line, try either this (here CPUs 1 through 7):</p>
+<div class="CodeRay">
+  <div class="code"><pre>for i in $(seq 1 7); do
+  echo 0|sudo tee /sys/devices/system/cpu/cpu$i/online
+done</pre></div>
+</div>
+
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font: inherit; vertical-align: baseline; color: #1f0909; font-family: PT Serif; line-height: 24px; text-align: left; padding: 0px;">(as a one-liner this becomes:&nbsp;<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">for i in $(seq 1 7); do echo 0|sudo tee /sys/devices/system/cpu/cpu$i/online; done</code>) or:</p>
+<div class="CodeRay">
+  <div class="code"><pre>echo 0|sudo tee /sys/devices/system/cpu/cpu{1,2,3,4,5,6,7}/online</pre></div>
+</div>
+
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font: inherit; vertical-align: baseline; color: #1f0909; font-family: PT Serif; line-height: 24px; text-align: left; padding: 0px;">Obviously some CPU needs to be operable, though. So I suggest you try to figure out what exactly causes the behavior when you plug in the power.</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font: inherit; vertical-align: baseline; color: #1f0909; font-family: PT Serif; line-height: 24px; text-align: left; padding: 0px;">Also check out the pseudo-files&nbsp;<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">offline</code>,&nbsp;<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">online</code>,&nbsp;<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">possible</code>,&nbsp;<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">present</code>&nbsp;inside<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">/sys/devices/system/cpu/</code>&nbsp;as they will give you and insight which CPUs are available at all.</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font: inherit; vertical-align: baseline; color: #1f0909; font-family: PT Serif; line-height: 24px; text-align: left; padding: 0px;"><strong style="font: inherit; vertical-align: baseline; padding: 0px; margin: 0px;">Edit:</strong>&nbsp;given your additional information, you might want to check whether your (Ubuntu) system has the following packages installed and then edit the details into your question so we can help:&nbsp;<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">apmd</code>,&nbsp;<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">toshset</code>,<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">acpid</code>. Use the following (replace&nbsp;<code style="font-size: 0.875em; font: inherit; vertical-align: baseline; font-family: Inconsolata; line-height: 1.714285em; padding: 0px; margin: 0px;">&lt;package-name&gt;</code>&nbsp;with the aforementioned):</p>
+</p>
+<p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font: inherit; vertical-align: baseline; color: #1f0909; font-family: PT Serif; line-height: 24px; text-align: left; padding: 0px;">via&nbsp;<a href="http://askubuntu.com/questions/108887/how-to-disable-processor-drivers">http://askubuntu.com/questions/108887/how-to-disable-processor-drivers</a></p></div>
+<div class='post_tags'>
+<h4>Tags</h4>
+<div class='post_tags_list'>linux</div>
+</div>
+<div class='post_responses'>
+<h4>92 views and 0 responses</h4>
+<ul class='post_responses list'>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

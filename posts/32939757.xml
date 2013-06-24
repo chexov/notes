@@ -1,0 +1,100 @@
+<item>
+	<title>Mysql-Cluster ndbd monitoring with nagios</title>
+	<link>http://chexov.posterous.com/2008/12/mysql-cluster-ndbd-monitoring-with.html</link>
+	<pubDate>Sun Dec 14 15:53:00 -0800 2008</pubDate>
+	
+	<dc:creator><![CDATA[Anton Checkhov]]></dc:creator>
+	
+	
+		<category domain="tag" nicename="nagios"><![CDATA[nagios]]></category>
+	
+
+	<category><![CDATA[Uncategorized]]></category>
+
+	<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+
+  <guid isPermaLink="false">http://chexov.posterous.com/2008/12/mysql-cluster-ndbd-monitoring-with.html</guid>
+	<description></description>
+	<content:encoded><![CDATA[<p><em>During usage of ndbd nodes (table type ndbcluster), a lot of strange things happens :-)<br /> One and the most terrible is ndbd daemon termination without any warring messages in logs or core files.</em> This plugin helps inform Nagios if ndbd doing something wrong <a href="http://github.com/chexov/unixscripts/raw/master/mysql/check_ndbd">check_ndbd</a></p>
+<h3>Brief howto</h3>
+<p>Every service on mysqld-cluster have own ID. This id you can get from ndb_mgm output:</p>
+<blockquote>
+<div class="CodeRay">
+  <div class="code"><pre>~% ndb_mgm -c host=ndbhost
+-- NDB Cluster -- Management Client --
+ndb_mgm&gt; show
+Connected to Management Server at: db04:1186
+Cluster Configuration
+---------------------
+[ndbd(NDB)]     2 node(s)
+id=3    @10.10.10.204  (Version: 5.0.32, Nodegroup: 0)
+id=4    @10.10.10.205  (Version: 5.0.32, Nodegroup: 0, Master)
+
+[ndb_mgmd(MGM)] 2 node(s)
+id=1    @10.10.10.204  (Version: 5.0.32)
+id=2    @10.10.10.205  (Version: 5.0.32)
+
+[mysqld(API)]   2 node(s)
+id=5    @10.10.10.204  (Version: 5.0.32)
+id=6    @10.10.10.205  (Version: 5.0.32)
+
+ndb_mgm&gt;</pre></div>
+</div>
+
+</blockquote>
+<p>Find your NDB node ID. For me ID is 3 and 4.<br /> Than use Nagios script:<br /> <code>check_ndbd ndbdhost 3</code></p>
+<p>Here is Nagios checkcommand part:</p>
+<blockquote>
+<div class="CodeRay">
+  <div class="code"><pre>define command{
+        command_name    check_ndbd
+        command_line    /opt/sbin/check_ndbd $HOSTADDRESS$ $ARG1$
+}</pre></div>
+</div>
+
+</blockquote>
+<p>&nbsp;</p>
+<p>Here is Nagios service part:</p>
+<blockquote>
+<div class="CodeRay">
+  <div class="code"><pre>define service{
+        use clusterservice
+        hostgroup_name
+        mysql-cluster
+        service_description    mysql ndbd node 3
+        check_command          check_ndbd!3
+}</pre></div>
+</div>
+
+</blockquote>
+<p>&nbsp;</p>
+<div class="blogger-post-footer"><img src="https://blogger.googleusercontent.com/tracker/92519859511925554-7233880787409423272?l=insideoutminds.blogspot.com" height="1" alt="" width="1" /></div>]]></content:encoded>
+	<excerpt:encoded><![CDATA[During usage of ndbd nodes (table type ndbcluster), a lot of strange things happens :-) One and the most terrible is ndbd daemon termination without any warring messages in logs or core files. This plugin helps inform Nagios if ndbd doing somethin...]]></excerpt:encoded>	
+
+	<wp:post_date>Sun Dec 14 15:53:00 -0800 2008</wp:post_date>
+	<wp:post_date_gmt>%= display_date %></wp:post_date_gmt>
+	<wp:comment_status>open</wp:comment_status>
+	<wp:ping_status>open</wp:ping_status>
+	<wp:post_name>2008/12/mysql-cluster-ndbd-monitoring-with.html</wp:post_name>
+	<wp:status>publish</wp:status>
+	<wp:post_parent>0</wp:post_parent>
+	<wp:menu_order>0</wp:menu_order>
+	<wp:post_type>post</wp:post_type>
+	<wp:post_password></wp:post_password>
+	<wp:is_sticky>0</wp:is_sticky>
+
+	
+		<wp:comment>
+			<!-- <wp:comment_id>5</wp:comment_id> -->
+			<wp:comment_author><![CDATA[Bananaman]]></wp:comment_author>
+			<wp:comment_author_email></wp:comment_author_email>
+			<wp:comment_author_url></wp:comment_author_url>
+			<wp:comment_date>Fri Oct 30 11:45:23 -0700 2009</wp:comment_date>
+			<wp:comment_date_gmt>Fri Oct 30 11:45:23 -0700 2009</wp:comment_date_gmt>
+			<wp:comment_content><![CDATA[Works great, thanks much :)]]></wp:comment_content>
+			<wp:comment_approved>1</wp:comment_approved>
+			<wp:comment_type></wp:comment_type>
+			<wp:comment_parent>0</wp:comment_parent>
+		</wp:comment>
+	
+</item>

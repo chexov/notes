@@ -1,0 +1,50 @@
+<item>
+	<title>vim: save with sudo</title>
+	<link>http://chexov.posterous.com/vim-save-with-sudo</link>
+	<pubDate>Wed Apr 21 00:06:00 -0700 2010</pubDate>
+	
+	<dc:creator><![CDATA[Anton Checkhov]]></dc:creator>
+	
+	
+		<category domain="tag" nicename="vim"><![CDATA[vim]]></category>
+	
+
+	<category><![CDATA[Uncategorized]]></category>
+
+	<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+
+  <guid isPermaLink="false">http://chexov.posterous.com/vim-save-with-sudo</guid>
+	<description></description>
+	<content:encoded><![CDATA[
+  <pre>.vimrc:
+cmap w!! %!sudo tee &gt; /dev/null %</pre>
+]]></content:encoded>
+	<excerpt:encoded><![CDATA[.vimrc: cmap w!! %!sudo tee > /dev/null %]]></excerpt:encoded>	
+
+	<wp:post_date>Wed Apr 21 00:06:00 -0700 2010</wp:post_date>
+	<wp:post_date_gmt>%= display_date %></wp:post_date_gmt>
+	<wp:comment_status>open</wp:comment_status>
+	<wp:ping_status>open</wp:ping_status>
+	<wp:post_name></wp:post_name>
+	<wp:status>publish</wp:status>
+	<wp:post_parent>0</wp:post_parent>
+	<wp:menu_order>0</wp:menu_order>
+	<wp:post_type>post</wp:post_type>
+	<wp:post_password></wp:post_password>
+	<wp:is_sticky>0</wp:is_sticky>
+
+	
+		<wp:comment>
+			<!-- <wp:comment_id>5</wp:comment_id> -->
+			<wp:comment_author><![CDATA[]]></wp:comment_author>
+			<wp:comment_author_email></wp:comment_author_email>
+			<wp:comment_author_url></wp:comment_author_url>
+			<wp:comment_date>Wed May 05 06:49:25 -0700 2010</wp:comment_date>
+			<wp:comment_date_gmt>Wed May 05 06:49:25 -0700 2010</wp:comment_date_gmt>
+			<wp:comment_content><![CDATA[that's nice tip, thank you]]></wp:comment_content>
+			<wp:comment_approved>1</wp:comment_approved>
+			<wp:comment_type></wp:comment_type>
+			<wp:comment_parent>0</wp:comment_parent>
+		</wp:comment>
+	
+</item>

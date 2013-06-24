@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<link href='../../../exports.css' rel='stylesheet'>
+<link href='../../../exports.css' rel='stylesheet'>
+
+</head>
+<body>
+<div id='wrap'>
+<div id='header'>
+<h1>Thoughts and notes</h1>
+<h2>This is an archived post
+This is an archived post
+</h2>
+</div>
+<div id='content'><div id='nav'>
+<a href="../../../posts/2009/01/2009/01/red-hat-gfs-monitoring.html.html">Previous</a>
+&nbsp; 
+<a href="../../../index.html">Index</a>
+&nbsp; 
+<a href="../../../posts/2010/11/caffeinism.html">Next</a>
+</div>
+<div class='post'>
+<div class='post_header'>
+<h3>Mysql-Cluster ndbd monitoring with nagios</h3>
+<div class='post_info'>
+<span class='post_time'>December 14 2008,  3:53 PM</span>
+<span class='author'>&nbsp;by Anton Checkhov</span>
+</div>
+</div>
+<div class='post_body'><p><em>During usage of ndbd nodes (table type ndbcluster), a lot of strange things happens :-)<br /> One and the most terrible is ndbd daemon termination without any warring messages in logs or core files.</em> This plugin helps inform Nagios if ndbd doing something wrong <a href="http://github.com/chexov/unixscripts/raw/master/mysql/check_ndbd">check_ndbd</a></p>
+<h3>Brief howto</h3>
+<p>Every service on mysqld-cluster have own ID. This id you can get from ndb_mgm output:</p>
+<blockquote>
+<div class="CodeRay">
+  <div class="code"><pre>~% ndb_mgm -c host=ndbhost
+-- NDB Cluster -- Management Client --
+ndb_mgm&gt; show
+Connected to Management Server at: db04:1186
+Cluster Configuration
+---------------------
+[ndbd(NDB)]     2 node(s)
+id=3    @10.10.10.204  (Version: 5.0.32, Nodegroup: 0)
+id=4    @10.10.10.205  (Version: 5.0.32, Nodegroup: 0, Master)
+
+[ndb_mgmd(MGM)] 2 node(s)
+id=1    @10.10.10.204  (Version: 5.0.32)
+id=2    @10.10.10.205  (Version: 5.0.32)
+
+[mysqld(API)]   2 node(s)
+id=5    @10.10.10.204  (Version: 5.0.32)
+id=6    @10.10.10.205  (Version: 5.0.32)
+
+ndb_mgm&gt;</pre></div>
+</div>
+
+</blockquote>
+<p>Find your NDB node ID. For me ID is 3 and 4.<br /> Than use Nagios script:<br /> <code>check_ndbd ndbdhost 3</code></p>
+<p>Here is Nagios checkcommand part:</p>
+<blockquote>
+<div class="CodeRay">
+  <div class="code"><pre>define command{
+        command_name    check_ndbd
+        command_line    /opt/sbin/check_ndbd $HOSTADDRESS$ $ARG1$
+}</pre></div>
+</div>
+
+</blockquote>
+<p>&nbsp;</p>
+<p>Here is Nagios service part:</p>
+<blockquote>
+<div class="CodeRay">
+  <div class="code"><pre>define service{
+        use clusterservice
+        hostgroup_name
+        mysql-cluster
+        service_description    mysql ndbd node 3
+        check_command          check_ndbd!3
+}</pre></div>
+</div>
+
+</blockquote>
+<p>&nbsp;</p>
+<div class="blogger-post-footer"><img src="https://blogger.googleusercontent.com/tracker/92519859511925554-7233880787409423272?l=insideoutminds.blogspot.com" height="1" alt="" width="1" /></div></div>
+<div class='post_tags'>
+<h4>Tags</h4>
+<div class='post_tags_list'>nagios</div>
+</div>
+<div class='post_responses'>
+<h4>350 views and 1 response</h4>
+<ul class='post_responses list'>
+<li class='response clearfix'>
+<div class='response_header'>
+<div class='response_time'>Oct 30 2009, 11:45 AM</div>
+<div class='response_name'>Bananaman responded:</div>
+</div>
+<div class='response_body'>Works great, thanks much :)</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
